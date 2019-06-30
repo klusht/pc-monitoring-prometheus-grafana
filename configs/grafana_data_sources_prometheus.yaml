@@ -1,0 +1,13 @@
+# # config file version
+apiVersion: 1
+
+
+datasources:
+  - access: 'proxy'              # grafana manages the requests
+    is_default: true
+    url: 'http://localhost:9090' # local prometheus
+    name: 'prometheus'
+    type: 'prometheus'           # datasource query model
+    org_id: 1                    # show this for the first organization
+    version: 1
+    editable: false              # whether it should be editable

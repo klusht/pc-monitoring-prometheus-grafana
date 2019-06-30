@@ -1,0 +1,34 @@
+# my global config
+global:
+  scrape_interval:     1s # Set the scrape interval to every 1 seconds. Default is every 1 minute.
+
+# Alertmanager configuration
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+          # - alertmanager:9093
+
+# Load rules
+rule_files:
+
+#Scrape configuration
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  - job_name: 'wmi'
+    static_configs:
+      - targets: ['localhost:9182']
+
+  - job_name: 'PC-HS110-realtime'
+    static_configs:
+      - targets: ['localhost:9999']
+    metrics_path: /metrics
+
+  - job_name: 'PC-HS110-info'
+    static_configs:
+      - targets: ['localhost:9999']
+    scrape_interval: 5m
+    metrics_path: /info
